@@ -10,8 +10,7 @@ public class TareaEncontrarNumeroMenor {
         
         Scanner scanner = new Scanner(System.in);
         scanner.useLocale(Locale.US); //para que el separador decimal sea punto 
-        
-        
+               
         
         try {
             
