@@ -1,3 +1,4 @@
+import java.util.Map;
 import java.util.Properties;
 
 public class PropiedadesDeSistema {
@@ -18,5 +19,19 @@ public class PropiedadesDeSistema {
         Properties p = System.getProperties();
         p.list(System.out);
         
+        //Variables de ambiente
+        Map<String, String> varEnv = System.getenv();
+        System.out.println("Variables de ambiente: " + varEnv);
+        
+        aux = System.getenv("USERNAME");
+        System.out.println("username:"+aux);
+        
+        aux = varEnv.get("Path");
+        System.out.println("path:"+aux);
+        
+        //Llamar Garbage collector
+        System.gc();
+        //Salir sin error
+        System.exit(0);
     }
 }

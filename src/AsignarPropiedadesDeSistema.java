@@ -15,7 +15,11 @@ public class AsignarPropiedadesDeSistema {
             p.load(archivo);
             p.setProperty("mi.propiedad.personalizada", "Mi valor guardado");
             
-            System.getProperties().list(System.out);
+            System.setProperties(p);
+            //System.getProperties().list(System.out);
+            Properties ps = System.getProperties();
+            ps.list(System.out);
+            
         }
         catch( Exception e ) {
             System.out.println("error al acceder al archivo de configuración " + e);
