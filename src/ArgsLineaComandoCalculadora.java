@@ -13,24 +13,30 @@ public class ArgsLineaComandoCalculadora {
             System.exit(-1);
         }
 
-        double numero1 = Double.parseDouble(args[1]);
-        double numero2 = Double.parseDouble(args[2]);
-
         double resultado = 0;
 
-        switch (operacion) {
-            case "x":
-                resultado = numero1 * numero2;
-                break;
-            case "%":
-                resultado = numero1 / numero2;
-                break;
-            case "+":
-                resultado = numero1 + numero2;
-                break;
-            case "-":
-                resultado = numero1 - numero2;
-                break;
+        try {
+            double numero1 = Double.parseDouble(args[1]);
+            double numero2 = Double.parseDouble(args[2]);
+
+            switch (operacion) {
+                case "x":
+                    resultado = numero1 * numero2;
+                    break;
+                case "%":
+                    resultado = numero1 / numero2;
+                    break;
+                case "+":
+                    resultado = numero1 + numero2;
+                    break;
+                case "-":
+                    resultado = numero1 - numero2;
+                    break;
+            }
+
+        } catch (Exception e) {
+            System.out.println("Números incorrectos");
+            System.exit(-1);
         }
 
         System.out.println("Resultado " + resultado);
