@@ -2,15 +2,24 @@ package Objetos;
 
 public class Automovil {
 
+    private int id;
     private String fabricante;
     private String modelo;
     private String color = "gris";
     private double cilindrada;
     private int capacidadTanque = 40;
+    private static int ultimoId;
+    
+    //corresponde a la clase y aplica a todas las instancias el cambio
+    private static String colorPatente = "verde";
+    private static int capacidadTanqueStatic = 30;
 
-    public Automovil() {} //constructor sin parametros
+    public Automovil() { //constructor sin parametros
+        this.id = ++ultimoId; //ambos quedan incrementados en 1
+    } 
     
     public Automovil(String fabricante, String modelo) { //constructor
+        this(); //para ejecutar el constructor sin parámetros
         this.fabricante = fabricante;
         this.modelo = modelo;        
     }
@@ -51,11 +60,21 @@ public class Automovil {
         this.capacidadTanque = capacidadTanque;
     }
     
+    //deben ser static
+    public static String getColorPatente() {
+        return colorPatente;
+    }
+    //deben ser static
+    public static void setColorPatente(String colorPatente) {
+        Automovil.colorPatente = colorPatente;
+    }
+    
     public String verDetalle() {
-        return  "fabricante:"+this.fabricante +
-                "\nmodelo:"+this.modelo +
+        return  "fabricante:"+this.getFabricante() +
+                "\nmodelo:"+this.getModelo() +
                 "\ncolor:"+this.color +
-                "\ncilindrada:"+this.cilindrada;
+                "\ncilindrada:"+this.cilindrada +
+                "\ncolorPatente:"+ colorPatente;
     }
     
     public String acelerar(int rpm) {
@@ -78,6 +97,11 @@ public class Automovil {
     
     public float calcularConsumo(int km, int porcentajeBencina) {
         return km/(this.capacidadTanque * (porcentajeBencina/100f));
+    }
+    
+    //No puede hacer referencia a atributos que no sean static
+    public static float calcularConsumoStatic(int km, int porcentajeBencina) {
+        return km/(capacidadTanqueStatic * (porcentajeBencina/100f));
     }
     
     @Override

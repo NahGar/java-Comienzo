@@ -9,6 +9,11 @@ public class Instanciar {
         //subaru.setModelo("Impreza");
         subaru.setCilindrada(2.0);
         subaru.setColor("Blanco");
+        
+        //estático
+        //Automovil.colorPatente = "fucsia";
+        Automovil.setColorPatente("fucsia");
+        
         System.out.println(subaru.verDetalle());
         System.out.println(subaru.acelerar(3000));
         System.out.println(subaru.frenar());
