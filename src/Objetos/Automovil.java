@@ -1,18 +1,29 @@
 package Objetos;
 
+import java.awt.*;
+
 public class Automovil {
 
     private int id;
     private String fabricante;
     private String modelo;
-    private String color = "gris";
+    private ColorEnum color = ColorEnum.NEGRO;
     private double cilindrada;
     private int capacidadTanque = 40;
     private static int ultimoId;
+
+    //constante
+    public static final Integer VELOCIDAD_MAXIMA_CARRETERA = 120;
     
     //corresponde a la clase y aplica a todas las instancias el cambio
-    private static String colorPatente = "verde";
+    private static ColorEnum colorPatente = ColorEnum.VERDE;
     private static int capacidadTanqueStatic = 30;
+
+    //COLORES
+    //public static final String COLOR_ROJO = "Rojo";
+    //public static final String COLOR_NEGRO = "Negro";
+    //public static final String COLOR_BLANCO = "Blanco";
+    //public static final String COLOR_VERDE = "Verde";
 
     public Automovil() { //constructor sin parametros
         this.id = ++ultimoId; //ambos quedan incrementados en 1
@@ -24,7 +35,7 @@ public class Automovil {
         this.modelo = modelo;        
     }
     
-    public Automovil(String fabricante, String modelo, String color) { //constructor
+    public Automovil(String fabricante, String modelo, ColorEnum color) { //constructor
         this(fabricante,modelo);
         this.color = color;
     }
@@ -41,10 +52,10 @@ public class Automovil {
     public void setModelo(String modelo) {
         this.modelo = modelo;
     }
-    public String getColor() {
+    public ColorEnum getColor() {
         return this.color;
     }
-    public void setColor(String color) {
+    public void setColor(ColorEnum color) {
         this.color = color;
     }
     public double getCilindrada() {
@@ -61,18 +72,19 @@ public class Automovil {
     }
     
     //deben ser static
-    public static String getColorPatente() {
+    public static ColorEnum getColorPatente() {
         return colorPatente;
     }
     //deben ser static
-    public static void setColorPatente(String colorPatente) {
+    public static void setColorPatente(ColorEnum colorPatente) {
         Automovil.colorPatente = colorPatente;
     }
     
     public String verDetalle() {
-        return  "fabricante:"+this.getFabricante() +
+        return  "id:"+this.id +
+                "\nfabricante:"+this.getFabricante() +
                 "\nmodelo:"+this.getModelo() +
-                "\ncolor:"+this.color +
+                "\ncolor:"+this.color.getColor() +
                 "\ncilindrada:"+this.cilindrada +
                 "\ncolorPatente:"+ colorPatente;
     }
@@ -130,7 +142,8 @@ public class Automovil {
     
     @Override
     public String toString() {
-        return "\n" + "Automovil {\n" + 
+        return "\n" + "Automovil {\n" +
+                "  id=" + id + "\n" +
                 "  fabricante='" + fabricante + '\'' + "\n" +
                 "  modelo='" + modelo + '\'' +"\n" +
                 "  color='" + color + '\'' +"\n" +
