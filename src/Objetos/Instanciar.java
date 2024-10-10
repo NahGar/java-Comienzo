@@ -9,6 +9,7 @@ public class Instanciar {
         //subaru.setModelo("Impreza");
         subaru.setCilindrada(2.0);
         subaru.setColor(ColorEnum.BLANCO);
+        subaru.setTipo(TipoAutomovilEnum.HATCHBACK);
         
         //estático
         //Automovil.colorPatente = "fucsia";
@@ -34,6 +35,19 @@ public class Instanciar {
         
         Automovil auto = new Automovil();
         System.out.println("Son iguales 3 ? " + subaru.equals(auto));
+        
+        TipoAutomovilEnum tipoSubaru = subaru.getTipo();
+        switch(tipoSubaru) {
+            case CONVERTIBLE:
+                System.out.println("El automovil es deportivo, descapotable de dos puertas");
+                break;
+            case COUPE:
+                System.out.println("El automovil es pequeño, deportivo de dos puertas");
+                break;
+            case HATCHBACK:
+                System.out.println("El automovil es mediano, compacto y deportivo");
+                break;
+        }
     }
 
 }

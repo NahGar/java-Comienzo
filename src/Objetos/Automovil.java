@@ -10,6 +10,7 @@ public class Automovil {
     private ColorEnum color = ColorEnum.NEGRO;
     private double cilindrada;
     private int capacidadTanque = 40;
+    private TipoAutomovilEnum tipo;
     private static int ultimoId;
 
     //constante
@@ -71,6 +72,13 @@ public class Automovil {
         this.capacidadTanque = capacidadTanque;
     }
     
+    public TipoAutomovilEnum getTipo() {
+        return this.tipo;
+    }
+    public void setTipo(TipoAutomovilEnum tipo) {
+        this.tipo = tipo;
+    }
+    
     //deben ser static
     public static ColorEnum getColorPatente() {
         return colorPatente;
@@ -84,6 +92,7 @@ public class Automovil {
         return  "id:"+this.id +
                 "\nfabricante:"+this.getFabricante() +
                 "\nmodelo:"+this.getModelo() +
+                "\ntipo:"+this.getTipo().getDescripcion() + " (" + this.getTipo().getNumeroPuertas() + ")" +
                 "\ncolor:"+this.color.getColor() +
                 "\ncilindrada:"+this.cilindrada +
                 "\ncolorPatente:"+ colorPatente;
