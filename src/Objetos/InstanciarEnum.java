@@ -5,7 +5,10 @@ public class InstanciarEnum {
     public static void main(String[] args) {
 
         Automovil subaru = new Automovil("Subaru","Impreza");
-        subaru.setCilindrada(2.0);
+        //subaru.setCilindrada(2.0);
+        Motor motor = new Motor(1.6,TipoMotorEnum.DIESEL);
+        subaru.setMotor(motor);
+        
         subaru.setColor(ColorEnum.BLANCO);
         subaru.setTipo(TipoAutomovilEnum.HATCHBACK);
 
