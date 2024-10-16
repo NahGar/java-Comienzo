@@ -1,8 +1,7 @@
 package Objetos;
 
-import java.awt.*;
-
-public class Automovil {
+//implements Comparable es para poder implementar compareTo y así ordenar un array de objs
+public class Automovil implements Comparable<Automovil> {
 
     private int id;
     private String fabricante;
@@ -221,5 +220,14 @@ public class Automovil {
                 "  capacidadTanque=" + this.tanque.getCapacidad() + "\n" +
                 "}";
     }
-    
+
+    @Override
+    public int compareTo(Automovil auto) {
+        int fabricanteComparison = this.fabricante.compareTo(auto.fabricante);
+        if (fabricanteComparison != 0) {
+            return fabricanteComparison;
+        }
+        // Si los fabricantes son iguales, se compara por modelo
+        return this.modelo.compareTo(auto.modelo);
+    }
 }
