@@ -3,12 +3,25 @@ package org.ngarcia.pooherencia;
 public class Persona {
 
     //si un atributo es protected se puede acceder directamente desde las clases que hereden
-    //no necesitando get y set
-    protected String nombre;
-    //private String nombre;
+    //no necesitando get y set. Esto si están en el mismo package
+    //protected String nombre;
+    private String nombre;
     private String apellido;
     private int edad;
     private String email;
+    
+    public Persona() {
+    }
+    
+    public Persona(String nombre, String apellido) {
+        this.nombre = nombre;
+        this.apellido = apellido;
+    }
+    
+    public Persona(String nombre, String apellido, int edad) {
+        this(nombre,apellido);
+        this.edad = edad;
+    }
 
     public String getNombre() {
         return nombre;

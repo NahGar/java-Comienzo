@@ -14,6 +14,23 @@ public class Alumno extends Persona {
     //    this.nombre = nombre;
     //}
 
+    public Alumno() {
+    }
+    
+    public Alumno(String nombre, String apellido) {
+        super(nombre, apellido);
+    }
+    
+    public Alumno(String nombre, String apellido, int edad) {
+        super(nombre, apellido, edad);
+    }
+    
+    public Alumno(String nombre, String apellido, int edad, String institucion) {
+        //podría usar this en lugar de super
+        super(nombre, apellido, edad);
+        this.institucion = institucion;
+    }
+    
     public String getInstitucion() {
         return institucion;
     }
