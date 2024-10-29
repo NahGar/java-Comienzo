@@ -8,8 +8,8 @@ public class Ejecutar {
         //alumno.setNombre("Pedro");
         //alumno.setApellido("Rodríguez");
         Alumno alumno = new Alumno("Pedro", "Rodríguez", 17, "Carmelitas descalzas");
-        alumno.setNotaHistoria(7.5);
-        alumno.setNotaLenguaje(8);
+        alumno.setNotaHistoria(5);
+        alumno.setNotaLenguaje(5);
         alumno.setNotaMatematica(5);
         alumno.setEmail("aaa@ccc.com");
         
@@ -18,12 +18,12 @@ public class Ejecutar {
         //alumnoInt.setApellido("Gosling");
         AlumnoInternacional alumnoInt = new AlumnoInternacional("Peter", "Gosling");
         alumnoInt.setPais("Australia");
-        alumnoInt.setEdad(15);
+        alumnoInt.setEdad(14);
         alumnoInt.setInstitucion("Instituto nacional");
         alumnoInt.setNotaIdiomas(6);
-        alumnoInt.setNotaMatematica(9);
-        alumnoInt.setNotaLenguaje(3.5);
-        alumnoInt.setNotaHistoria(8);
+        alumnoInt.setNotaMatematica(6);
+        alumnoInt.setNotaLenguaje(6);
+        alumnoInt.setNotaHistoria(6);
         alumnoInt.setEmail("bbb@ccc.com");
                 
         //Profesor profesor = new Profesor();
@@ -34,10 +34,11 @@ public class Ejecutar {
         profesor.setEdad(50);
         profesor.setEmail("ddd@ccc.com");
                 
+        System.out.println("------------------------------");
         imprimir(alumno);
         imprimir(alumnoInt);
         imprimir(profesor);
-        
+        /*
         Class clase = alumnoInt.getClass();
         while( clase.getSuperclass() != null ) {
             String hija = clase.getName();
@@ -45,13 +46,16 @@ public class Ejecutar {
             System.out.println( hija + " es una clase hija de " + padre);
             clase = clase.getSuperclass();
         }
-        
+        */
     }
     
+    
     public static void imprimir(Persona persona) {
+        /*
         System.out.println("Nombre: " + persona.getNombre() + " " 
                 + persona.getApellido() + ", edad: " + persona.getEdad()
                 + ", email: " + persona.getEmail());
+                
         if( persona instanceof Alumno ) {
             System.out.println("Institución: " + ((Alumno) persona).getInstitucion());
             System.out.println("Nota mates: " + ((Alumno) persona).getNotaMatematica());
@@ -62,10 +66,21 @@ public class Ejecutar {
                 System.out.println("Nota idiomas: " + ((AlumnoInternacional) persona).getNotaIdiomas());
                 System.out.println("País: " + ((AlumnoInternacional) persona).getPais());
             }
+            
+            //aunque este el cast a Alumno utiliza AlumnoInternacional cuando corresponda
+            System.out.println("Promedio: " + ((Alumno) persona).calcularPromedio());
         }
         if( persona instanceof Profesor ) {
             System.out.println("Asignatura: " + ((Profesor) persona).getAsignatura());
         }
         
+        System.out.println( persona.saludar());
+        */
+    
+        //sobreescribiendo toString()
+        System.out.println("------------------------------");
+        System.out.println(persona);
     }
+    
+    
 }
