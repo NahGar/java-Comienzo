@@ -36,4 +36,15 @@ public class Opcion {
     public void setSelected(boolean selected) {
         this.selected = selected;
     }
+
+    //para que se pueda utilizar encadenando
+    //public Opcion setSelected(boolean selected) {
+    //    this.selected = selected;
+    //    return this;
+    //}
+
+    public Opcion setSelected() {
+        this.selected = true;
+        return this;
+    }
 }

@@ -44,13 +44,14 @@ public class SelectForm extends ElementoForm {
             if(opcion.isSelected()) {
                 sb.append("\n<option value='").append(opcion.getValor()).append("' selected>")
                         .append(opcion.getNombre()).append("</option>");
+                this.valor = opcion.getValor();
             }
             else {
                 sb.append("\n<option value='").append(opcion.getValor()).append("'>")
                         .append(opcion.getNombre()).append("</option>");
             }
         }
-        sb.append("</select>");
+        sb.append("\n</select>");
 
         return sb.toString();
     }
