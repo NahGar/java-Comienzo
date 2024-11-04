@@ -1,8 +1,10 @@
 package org.ngarcia.pooClasesAbstractas.form.validador;
 
-public class LargoValidador extends Validador {
+import org.ngarcia.pooClasesAbstractas.form.validador.mensaje.IMensajeFormateable;
 
-    protected String mensaje = "el campo debe tener mínimo %d caracteres y máximo %d caracteres";
+public class LargoValidador extends Validador implements IMensajeFormateable {
+
+    protected String mensaje = "el campo '%s' debe tener mínimo %d caracteres y máximo %d caracteres";
     private int min = 0;
     private int max = Integer.MAX_VALUE;
 
@@ -33,7 +35,21 @@ public class LargoValidador extends Validador {
         if( valor == null ) {
             return true;
         }
-        this.mensaje = String.format(this.mensaje,this.min,this.max);
+        //this.mensaje = String.format(this.mensaje,this.min,this.max);
+        
         return (valor.length() >= this.min && valor.length() <= this.max);
     }
+    
+    //se implementa interface
+    /*
+    public String getMensajeFormateado(String campo) {
+        return String.format(this.mensaje,campo,this.min,this.max);
+    }*/
+
+    @Override
+    public String getMensajeFormateado(String campo) {
+        return String.format(this.mensaje,campo,this.min,this.max);
+    }
+    
+    
 }

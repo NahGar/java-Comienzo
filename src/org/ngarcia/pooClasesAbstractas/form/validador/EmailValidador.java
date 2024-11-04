@@ -2,7 +2,7 @@ package org.ngarcia.pooClasesAbstractas.form.validador;
 
 public class EmailValidador extends Validador {
 
-    protected String mensaje = "el formato del email no es válido";
+    protected String mensaje = "el campo '%s' tiene un formato de correo inválido";
     private final static String EMAIL_REGEX = "^(.+)@(.+)$";
 
     @Override
