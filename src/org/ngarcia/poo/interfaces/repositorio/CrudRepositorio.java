@@ -1,7 +1,7 @@
 package org.ngarcia.poo.interfaces.repositorio;
 
 import java.util.List;
-import org.ngarcia.appfacturas.modelo.Cliente;
+import org.ngarcia.poo.interfaces.modelo.Cliente;
 
 public interface CrudRepositorio {
 
@@ -9,5 +9,5 @@ public interface CrudRepositorio {
     Cliente getPorId(Integer id);
     void crear(Cliente cliente);
     void editar(Cliente cliente);
-    void eliminar(Cliente cliente);
+    void eliminar(Integer id);
 }

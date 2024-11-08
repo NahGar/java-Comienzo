@@ -2,17 +2,17 @@ package org.ngarcia.poo.interfaces.repositorio;
 
 import java.util.ArrayList;
 import java.util.List;
-import org.ngarcia.appfacturas.modelo.Cliente;
+import org.ngarcia.poo.interfaces.modelo.Cliente;
 
-public class ClienteListRepositorio implements CrudRepositorio, OrdenableRepositorio,
-        PaginableRepositorio {
+//public class ClienteListRepositorio implements CrudRepositorio, OrdenableRepositorio,
+//        PaginableRepositorio {
+public class ClienteListRepositorio implements FullRepositorio {
 
     private List<Cliente> dataSource;
 
     public ClienteListRepositorio() {
         this.dataSource = new ArrayList<>();
     }
-        
     
     @Override
     public List<Cliente> listar() {
@@ -21,32 +21,104 @@ public class ClienteListRepositorio implements CrudRepositorio, OrdenableReposit
 
     @Override
     public Cliente getPorId(Integer id) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        Cliente cliente = null;
+        for(Cliente cli: this.dataSource) {
+            if(cli.getId() != null && cli.getId().equals(id)) {
+                cliente = cli;
+                break;
+            }
+        }
+        return cliente;
     }
 
     @Override
     public void crear(Cliente cliente) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        this.dataSource.add(cliente);
     }
 
     @Override
     public void editar(Cliente cliente) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        Cliente cli = this.getPorId(cliente.getId());
+        cli.setNombre(cliente.getNombre());
+        cli.setApellido(cliente.getApellido());
     }
 
     @Override
-    public void eliminar(Cliente cliente) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    public void eliminar(Integer id) {
+        this.dataSource.remove(this.getPorId(id));
     }
 
     @Override
-    public List<Cliente> listar(String campo, EnumDireccion dir) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    public List<Cliente> listar(String campoOrdenar, EnumDireccion dir) {
+
+        List<Cliente> listaOrdenada = new ArrayList<>(this.dataSource);
+
+        /*
+        listaOrdenada.sort(new Comparator<Cliente>() {
+            @Override
+            public int compare(Cliente cli1, Cliente cli2) {
+                int resultado = 0;
+                if(dir == EnumDireccion.ASC) {
+                    resultado = this.ordenar(cli1, cli2);
+                }
+                else if(dir == EnumDireccion.DESC) {
+                    resultado = this.ordenar(cli2, cli1);
+                }
+                return resultado;
+            }
+
+            private int ordenar(Cliente cli1, Cliente cli2) {
+                int resultado = 0;
+                switch (campoOrdenar) {
+                    case "id" ->
+                        resultado = cli1.getId().compareTo(cli2.getId());
+                    case "nombre" ->
+                        resultado = cli1.getNombre().compareTo(cli2.getNombre());
+                    case "apellido" ->
+                        resultado = cli1.getApellido().compareTo(cli2.getApellido());
+                }
+                return resultado;
+            }
+        });
+        */
+
+        //como Coparator es @FunctionalInterface se pueden usar
+        //expresiones lambda (porque tiene un único método)
+        listaOrdenada.sort((cli1, cli2) -> {
+
+            int resultado = 0;
+            if(dir == EnumDireccion.ASC) {
+                resultado = ordenar(campoOrdenar, cli1, cli2);
+            }
+            else if(dir == EnumDireccion.DESC) {
+                resultado = ordenar(campoOrdenar, cli2, cli1);
+            }
+            return resultado;
+        });
+        return listaOrdenada;
     }
 
     @Override
     public List<Cliente> listar(int desde, int hasta) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        return this.dataSource.subList(desde, hasta);
     }
-    
+
+    @Override
+    public int total() {
+        return this.dataSource.size();
+    }
+
+    public static int ordenar(String campoOrdenar, Cliente cli1, Cliente cli2) {
+        int resultado = 0;
+        switch (campoOrdenar) {
+            case "id" ->
+                    resultado = cli1.getId().compareTo(cli2.getId());
+            case "nombre" ->
+                    resultado = cli1.getNombre().compareTo(cli2.getNombre());
+            case "apellido" ->
+                    resultado = cli1.getApellido().compareTo(cli2.getApellido());
+        }
+        return resultado;
+    }
+
 }
