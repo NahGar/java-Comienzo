@@ -9,7 +9,7 @@ public class Ejecutar {
 
     public static void main(String[] args) {
 
-        FullRepositorio repo = new ClienteListRepositorio();
+        FullRepositorio<Cliente> repo = new ClienteListRepositorio();
         repo.crear(new Cliente("Pedro","Rodríguez"));
         repo.crear(new Cliente("Micaela","Nieves"));
         repo.crear(new Cliente("Evan","Garcia"));
