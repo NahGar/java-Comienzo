@@ -2,10 +2,11 @@ package org.ngarcia.poo.interfaces;
 
 import org.ngarcia.poo.interfaces.modelo.Cliente;
 import org.ngarcia.poo.interfaces.repositorio.*;
+import org.ngarcia.poo.interfaces.repositorio.lista.ClienteListRepositorio;
 
 import java.util.List;
 
-public class Ejecutar {
+public class EjecutarClientes {
 
     public static void main(String[] args) {
 

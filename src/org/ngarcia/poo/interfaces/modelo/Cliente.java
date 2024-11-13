@@ -2,30 +2,33 @@ package org.ngarcia.poo.interfaces.modelo;
 
 import java.util.Objects;
 
-public class Cliente {
-    
-    private Integer id;
+//public class Cliente {
+public class Cliente extends BaseEntity {
+
+    //los campos comentados del id van a BaseEntity
+    //private Integer id;
     private String nombre;
     private String apellido;
-    private static int ultimoId;
+    //private static int ultimoId;
 
-    public Cliente() { 
-        this.id = ++ultimoId;
-    }
+    //public Cliente() {
+    //    this.id = ++ultimoId;
+    //}
     
     public Cliente(String nombre, String apellido) {
-        this();
+        //this();
+        super();
         this.nombre = nombre;
         this.apellido = apellido;
     }
 
-    public Integer getId() {
-        return id;
-    }
+    //public Integer getId() {
+    //    return id;
+    //}
 
-    public void setId(Integer id) {
-        this.id = id;
-    }
+    //public void setId(Integer id) {
+    //    this.id = id;
+    //}
 
     public String getNombre() {
         return nombre;
@@ -48,6 +51,7 @@ public class Cliente {
         return "id=" + id + ", nombre=" + nombre + ", apellido=" + apellido;
     }
 
+    /*
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -55,5 +59,5 @@ public class Cliente {
         Cliente cliente = (Cliente) o;
         return Objects.equals(id, cliente.id);
     }
-
+    */
 }

@@ -1,11 +1,14 @@
-package org.ngarcia.poo.interfaces.repositorio;
+package org.ngarcia.poo.interfaces.repositorio.lista;
 
 import java.util.ArrayList;
 import java.util.List;
 import org.ngarcia.poo.interfaces.modelo.Cliente;
+import org.ngarcia.poo.interfaces.repositorio.*;
 
 public class ClienteListRepositorio extends AbstractaListRepositorio<Cliente> {
 
+    //se implementa en BaseEntity (padre de AbstractaListRepositorio)
+    /*
     @Override
     public Cliente getPorId(Integer id) {
         Cliente cliente = null;
@@ -17,7 +20,8 @@ public class ClienteListRepositorio extends AbstractaListRepositorio<Cliente> {
         }
         return cliente;
     }
-    
+    */
+
     @Override
     public void editar(Cliente cliente) {
         Cliente cli = this.getPorId(cliente.getId());

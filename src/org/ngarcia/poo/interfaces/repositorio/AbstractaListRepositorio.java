@@ -1,9 +1,11 @@
 package org.ngarcia.poo.interfaces.repositorio;
 
+import org.ngarcia.poo.interfaces.modelo.BaseEntity;
+
 import java.util.ArrayList;
 import java.util.List;
 
-public abstract class AbstractaListRepositorio<T> implements FullRepositorio<T> {
+public abstract class AbstractaListRepositorio<T extends BaseEntity> implements FullRepositorio<T> {
 
     protected List<T> dataSource;
 
@@ -15,19 +17,19 @@ public abstract class AbstractaListRepositorio<T> implements FullRepositorio<T> 
     public List<T> listar() {
         return this.dataSource;
     }
-    /*
+
     @Override
-    public Cliente getPorId(Integer id) {
-        Cliente cliente = null;
-        for(Cliente cli: this.dataSource) {
-            if(cli.getId() != null && cli.getId().equals(id)) {
-                cliente = cli;
+    public T getPorId(Integer id) {
+        T obj = null;
+        for(T t: this.dataSource) {
+            if(t.getId() != null && t.getId().equals(id)) {
+                obj = t;
                 break;
             }
         }
-        return cliente;
+        return obj;
     }
-    */
+
     @Override
     public void crear(T t) {
         this.dataSource.add(t);
