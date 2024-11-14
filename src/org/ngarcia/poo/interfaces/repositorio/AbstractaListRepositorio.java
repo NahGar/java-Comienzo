@@ -4,6 +4,7 @@ import org.ngarcia.poo.interfaces.modelo.BaseEntity;
 
 import java.util.ArrayList;
 import java.util.List;
+import org.ngarcia.poo.interfaces.repositorio.excepciones.LecturaAccesoDatoException;
 
 public abstract class AbstractaListRepositorio<T extends BaseEntity> implements FullRepositorio<T> {
 
@@ -19,7 +20,12 @@ public abstract class AbstractaListRepositorio<T extends BaseEntity> implements 
     }
 
     @Override
-    public T getPorId(Integer id) {
+    //LecturaAccesoDatoException es hija de AccesoDatoException, definida
+    //en la interface CrudRepositorio
+    public T getPorId(Integer id) throws LecturaAccesoDatoException {
+        if(id == null || id <= 0) {
+            throw new LecturaAccesoDatoException("Id inválido");
+        }
         T obj = null;
         for(T t: this.dataSource) {
             if(t.getId() != null && t.getId().equals(id)) {
@@ -36,7 +42,7 @@ public abstract class AbstractaListRepositorio<T extends BaseEntity> implements 
     }
 
     @Override
-    public void eliminar(Integer id) {
+    public void eliminar(Integer id) throws LecturaAccesoDatoException {
         this.dataSource.remove(this.getPorId(id));
     }
 

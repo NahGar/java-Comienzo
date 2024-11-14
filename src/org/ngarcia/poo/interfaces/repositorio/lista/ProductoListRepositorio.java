@@ -4,15 +4,26 @@ import java.util.ArrayList;
 import java.util.List;
 import org.ngarcia.poo.interfaces.modelo.Producto;
 import org.ngarcia.poo.interfaces.repositorio.*;
+import org.ngarcia.poo.interfaces.repositorio.excepciones.*;
 
 public class ProductoListRepositorio extends AbstractaListRepositorio<Producto> {
 
 
     @Override
     public void editar(Producto producto) {
-        Producto prod = this.getPorId(producto.getId());
-        prod.setDescripcion(producto.getDescripcion());
-        prod.setPrecio(producto.getPrecio());
+        try {
+            Producto prod = this.getPorId(producto.getId());
+            prod.setDescripcion(producto.getDescripcion());
+            prod.setPrecio(producto.getPrecio());
+        }
+        catch(LecturaAccesoDatoException e) {
+            System.out.println("Error: "+ e.getMessage());
+            e.printStackTrace();
+        }
+        catch(AccesoDatoException e) {
+            System.out.println("Error: "+ e.getMessage());
+            e.printStackTrace();
+        }
     }
 
     @Override

@@ -1,7 +1,8 @@
 package org.ngarcia.poo.interfaces.repositorio;
 
 import java.util.List;
-import org.ngarcia.poo.interfaces.modelo.Cliente;
+import org.ngarcia.poo.interfaces.repositorio.excepciones.AccesoDatoException;
+//import org.ngarcia.poo.interfaces.modelo.Cliente;
 /*
 public interface CrudRepositorio {
 
@@ -15,8 +16,9 @@ public interface CrudRepositorio {
 public interface CrudRepositorio<T> {
 
     List<T> listar();
-    T getPorId(Integer id);
+    //se define AccesoDatoException por ser la más genérica
+    T getPorId(Integer id) throws AccesoDatoException;
     void crear(T obj);
     void editar(T obj);
-    void eliminar(Integer id);
+    void eliminar(Integer id) throws AccesoDatoException;
 }
