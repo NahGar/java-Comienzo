@@ -17,6 +17,7 @@ public class EjecutarClientes {
             repo.crear(new Cliente("Micaela","Nieves"));
             repo.crear(new Cliente("Evan","Garcia"));
             repo.crear(new Cliente("Gael","Garcia"));
+            repo.crear(null);
 
             List<Cliente> clientes = repo.listar();
             clientes.forEach(System.out::println);
@@ -44,7 +45,6 @@ public class EjecutarClientes {
             System.out.println("-----------------ADD----------------------");
 
             Cliente agregar = new Cliente("Nuevo","Nuevecito");
-            repo.crear(agregar);
             ordenDesc.forEach(System.out::println);
 
             System.out.println("-----------------DLT----------------------");
@@ -53,6 +53,14 @@ public class EjecutarClientes {
             ordenDesc.forEach(System.out::println);
 
             System.out.println("Total: "+ repo.total());
+        }
+        catch(RegistroDuplicadoAccesoDatoException e) {
+            System.out.println("Error: "+ e.getMessage());
+            e.printStackTrace();
+        }
+        catch(EscrituraAccesoDatoException e) {
+            System.out.println("Error: "+ e.getMessage());
+            e.printStackTrace();
         }
         catch(LecturaAccesoDatoException e) {
             System.out.println("Error: "+ e.getMessage());

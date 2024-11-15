@@ -18,6 +18,11 @@ public class EjecutarProductos {
             repo.crear(new Producto("coca cola",15.0));
             repo.crear(new Producto("pan de molde",5.0));
 
+            //repo.crear(null);
+            Producto repetido = new Producto("repetido",50.0);
+            repo.crear(repetido);
+            repo.crear(repetido);
+
             List<Producto> productos = repo.listar();
             productos.forEach(System.out::println);
 
@@ -55,6 +60,14 @@ public class EjecutarProductos {
             ordenAsc2.forEach(System.out::println);
 
             System.out.println("Total: "+ repo.total());
+        }
+        catch(RegistroDuplicadoAccesoDatoException e) {
+            System.out.println("Error: "+ e.getMessage());
+            e.printStackTrace();
+        }
+        catch(EscrituraAccesoDatoException e) {
+            System.out.println("Error: "+ e.getMessage());
+            e.printStackTrace();
         }
         catch(LecturaAccesoDatoException e) {
             System.out.println("Error: "+ e.getMessage());

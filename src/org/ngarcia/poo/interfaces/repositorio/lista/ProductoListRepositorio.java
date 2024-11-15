@@ -10,20 +10,10 @@ public class ProductoListRepositorio extends AbstractaListRepositorio<Producto> 
 
 
     @Override
-    public void editar(Producto producto) {
-        try {
-            Producto prod = this.getPorId(producto.getId());
-            prod.setDescripcion(producto.getDescripcion());
-            prod.setPrecio(producto.getPrecio());
-        }
-        catch(LecturaAccesoDatoException e) {
-            System.out.println("Error: "+ e.getMessage());
-            e.printStackTrace();
-        }
-        catch(AccesoDatoException e) {
-            System.out.println("Error: "+ e.getMessage());
-            e.printStackTrace();
-        }
+    public void editar(Producto producto) throws LecturaAccesoDatoException {
+        Producto prod = this.getPorId(producto.getId());
+        prod.setDescripcion(producto.getDescripcion());
+        prod.setPrecio(producto.getPrecio());
     }
 
     @Override

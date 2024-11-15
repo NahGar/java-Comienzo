@@ -24,20 +24,10 @@ public class ClienteListRepositorio extends AbstractaListRepositorio<Cliente> {
     */
 
     @Override
-    public void editar(Cliente cliente) {
-        try {
-            Cliente cli = this.getPorId(cliente.getId());
-            cli.setNombre(cliente.getNombre());
-            cli.setApellido(cliente.getApellido());
-        }
-        catch(LecturaAccesoDatoException e) {
-            System.out.println("Error: "+ e.getMessage());
-            e.printStackTrace();
-        }
-        catch(AccesoDatoException e) {
-            System.out.println("Error: "+ e.getMessage());
-            e.printStackTrace();
-        }
+    public void editar(Cliente cliente) throws LecturaAccesoDatoException {
+        Cliente cli = this.getPorId(cliente.getId());
+        cli.setNombre(cliente.getNombre());
+        cli.setApellido(cliente.getApellido());
     }
 
     @Override
