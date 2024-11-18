@@ -1,6 +1,9 @@
-package org.ngarcia.appfacturas;
+package org.ngarcia.app.facturas;
 
-import org.ngarcia.appfacturas.modelo.*;
+import org.ngarcia.app.facturas.modelo.ItemFactura;
+import org.ngarcia.app.facturas.modelo.Cliente;
+import org.ngarcia.app.facturas.modelo.Factura;
+import org.ngarcia.app.facturas.modelo.Producto;
 
 import java.util.Scanner;
 

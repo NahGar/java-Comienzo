@@ -1,4 +1,4 @@
-package org.ngarcia.appfacturas.modelo;
+package org.ngarcia.app.facturas.modelo;
 
 import java.text.SimpleDateFormat;
 import java.util.Arrays;

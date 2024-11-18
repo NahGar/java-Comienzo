@@ -1,4 +1,4 @@
-package org.ngarcia.appfacturas.modelo;
+package org.ngarcia.app.facturas.modelo;
 
 public class Cliente {
     
