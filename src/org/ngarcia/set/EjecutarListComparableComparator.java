@@ -2,6 +2,7 @@ package org.ngarcia.set;
 
 import java.util.Collections;
 import java.util.Comparator;
+import static  java.util.Comparator.comparing;
 import java.util.LinkedList;
 import java.util.List;
 import org.ngarcia.set.modelo.Alumno;
@@ -34,7 +35,9 @@ public class EjecutarListComparableComparator {
         //desc
         //sa.sort(Comparator.comparing((Alumno a) -> a.getNombre()).reversed());
         //equivalente a línea anterior
-        sa.sort(Comparator.comparing(Alumno::getNombre).reversed());
+        //sa.sort(Comparator.comparing(Alumno::getNombre).reversed());
+        //haciendo import del método static
+        sa.sort(comparing(Alumno::getNombre).reversed());
         
         System.out.println(sa);
         

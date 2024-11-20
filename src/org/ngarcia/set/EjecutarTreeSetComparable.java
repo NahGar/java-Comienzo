@@ -1,5 +1,6 @@
 package org.ngarcia.set;
 
+import java.util.Comparator;
 import java.util.Set;
 import java.util.TreeSet;
 import org.ngarcia.set.modelo.Alumno;
@@ -11,9 +12,11 @@ public class EjecutarTreeSetComparable {
         //TreeSet requiere clase que implemente comparable
         //Set<Alumno> sa = new TreeSet<>();
         //sobreescribir la forma de comparar (por nota)
-        Set<Alumno> sa = new TreeSet<>(
-                (a,b) -> a.getNombre().compareTo(b.getNombre())
-        );
+
+        //Set<Alumno> sa = new TreeSet<>((a,b) -> a.getNombre().compareTo(b.getNombre()));
+        //otra forma
+        Set<Alumno> sa = new TreeSet<>(Comparator.comparing(Alumno::getNombre).reversed());
+
         sa.add(new Alumno("Marcos",5));
         sa.add(new Alumno("Roberto",10));
         sa.add(new Alumno("Mica",12));
