@@ -1,4 +1,4 @@
-package org.ngarcia.set;
+package org.ngarcia.list;
 
 import org.ngarcia.set.modelo.Alumno;
 

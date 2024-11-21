@@ -1,4 +1,4 @@
-package org.ngarcia.set;
+package org.ngarcia.list;
 
 import java.util.Collections;
 import java.util.Comparator;
