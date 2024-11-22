@@ -1,7 +1,9 @@
 package org.ngarcia.map;
 
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Set;
 
 public class EjecutarHashMap {
     public static void main(String[] args) {
@@ -23,5 +25,35 @@ public class EjecutarHashMap {
         boolean elimino = persona.remove("edad","49");
         System.out.println("Elimina tel " + telefono);
         System.out.println(persona);
+
+        System.out.println("Existe tel " + persona.containsKey("teléfono"));
+        System.out.println("Existe valor " + persona.containsValue("Scott"));
+
+        System.out.println("---sustituye---");
+        //replace tiene sobrecarga que permite pasar el valor actual,
+        //si no coincide no reemplaza (devuelve boolean)
+        persona.replace("edad","90");
+
+        Collection<String> valores = persona.values();
+        System.out.println("Valores " + valores);
+
+        Set<String> llaves = persona.keySet();
+        System.out.println("Llaves " + llaves);
+
+        System.out.println("---obtiene key & value---");
+        for(Map.Entry<String,String> par: persona.entrySet()) {
+            System.out.println(par.getKey()+" -> "+par.getValue());
+        }
+
+        System.out.println("---obtiene keys & itera obteniendo valor---");
+        for(String llave: persona.keySet()) {
+            System.out.println(llave + " -> " + persona.get(llave));
+        }
+
+        System.out.println("---expresion lambda---");
+        persona.forEach( (llave, valor) -> System.out.println(llave + "->" + valor) );
+
+        System.out.println("cantidad elementos:"+persona.size());
+
     }
 }
