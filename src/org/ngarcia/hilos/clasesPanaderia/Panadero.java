@@ -1,8 +1,6 @@
 package org.ngarcia.hilos.clasesPanaderia;
 
 import java.util.concurrent.ThreadLocalRandom;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 public class Panadero implements Runnable {
 
