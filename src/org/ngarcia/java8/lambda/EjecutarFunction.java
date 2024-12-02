@@ -21,5 +21,8 @@ public class EjecutarFunction {
         //BiFunction<String,String,Integer> f4 = (a,b) -> a.compareTo(b);
         BiFunction<String,String,Integer> f4 = String::compareTo;
         System.out.println(f4.apply("A","B"));
+        
+        BiFunction<String,String,String> f5 = String::concat;
+        System.out.println(f5.apply("A","B"));
     }
 }
