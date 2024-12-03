@@ -35,10 +35,14 @@ public class Usuario {
     public void setApellido(String apellido) {
         this.apellido = apellido;
     }
+    
+    public static void resetUltimoId() {
+        ultimoId = 0;
+    }
 
     @Override
     public String toString() {
-        return nombre + " " + apellido;
+        return nombre + " " + apellido + " (" + id + ")";
     }
     
     
