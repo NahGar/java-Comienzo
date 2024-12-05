@@ -14,5 +14,23 @@ public class EjecutarAplanarArregloBidimensional {
                 .distinct();
 
         lenguaje2.forEach(lenguaje -> System.out.println(lenguaje));
+        
+        /*
+        String[][] lenguajes = {{"java", "groovy"}, {"php"}, {"c#", "python", "groovy"}, {"java", "javascript", "kotlin"}, {"javascript"}, {}};
+        Arrays.stream(lenguajes)
+                .flatMap(arr -> Arrays.stream(arr))
+                .distinct()
+                .forEach(e -> System.out.println(e));
+        */
+        
+        /*
+        String[][] lenguajes = {{"java", "groovy"}, {"php"}, {"c#", "python", "groovy"}, {"java", "javascript", "kotlin"}, {"javascript"}, {}};
+        
+        Function<String[][], List<String>> flatten = arr ->  Arrays.stream(arr).flatMap(a -> Arrays.stream(a))
+                .distinct()
+                .collect(Collectors.toList());
+        
+        flatten.apply(lenguajes).forEach(e -> System.out.println(e));
+        */
     }
 }

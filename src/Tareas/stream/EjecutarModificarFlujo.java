@@ -16,5 +16,20 @@ public class EjecutarModificarFlujo {
                 .reduce(0, (a,b) -> a + b );
 
         System.out.println(suma);
+        
+        /*
+        int[] arreglo = new int[100];
+
+        for (int i = 0; i < arreglo.length; i++) {
+            arreglo[i] = i+1;
+        }
+
+        double total = Arrays.stream(arreglo)
+                .filter(e -> e % 10 != 0)
+                .mapToDouble(e -> (double) e / 2)
+                .reduce(0, (ac, e) -> ac + e);
+        
+        System.out.println(total); // 2250.0
+        */
     }
 }
