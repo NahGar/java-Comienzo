@@ -2,6 +2,8 @@ package org.ngarcia.optional.repositorio;
 
 import java.util.*;
 import org.ngarcia.optional.models.Computador;
+import org.ngarcia.optional.models.Fabricante;
+import org.ngarcia.optional.models.Procesador;
 
 public class ComputadorRepositorio implements Repositorio<Computador> {
 
@@ -9,8 +11,13 @@ public class ComputadorRepositorio implements Repositorio<Computador> {
     
     public ComputadorRepositorio() {
         this.dataSource = new ArrayList<>();
-        this.dataSource.add(new Computador("Asus","SXR 457"));
-        this.dataSource.add(new Computador("Macbook","MDJOCE 1"));
+
+        Computador computador = new Computador("Asus","SXR 457");
+        computador.setProcesador(new Procesador("i5", new Fabricante("Intel")));
+        this.dataSource.add(computador);
+        computador = new Computador("Macbook","MDJOCE 1");
+        computador.setProcesador(new Procesador("a4", new Fabricante("Apple")));
+        this.dataSource.add(computador);
     }
     
     @Override
@@ -26,7 +33,7 @@ public class ComputadorRepositorio implements Repositorio<Computador> {
         return Optional.empty();
         */
         return dataSource.stream()
-                .filter( c -> c.getNombre().equalsIgnoreCase(nombre))
+                .filter( c -> c.getNombre().toLowerCase().equalsIgnoreCase(nombre.toLowerCase()))
                 .findFirst();
     }
     
